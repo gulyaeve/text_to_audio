@@ -14,9 +14,9 @@ def text_to_audio(bark_model="suno/bark", voice_preset="v2/ru_speaker_6", text="
     audio_array = audio_array.cpu().numpy().squeeze()
 
     sample_rate = model.generation_config.sample_rate
-    scipy.io.wavfile.write(f"{voice_preset.split('/')[0]}", rate=sample_rate, data=audio_array)
+    scipy.io.wavfile.write(f"{voice_preset.split('/')[0]}.wav", rate=sample_rate, data=audio_array)
 
 
 if __name__ == '__main__':
-    text_to_audio()
+    text_to_audio(text="Привет! Как дела? Нормально, хорошо.")
 
