@@ -11,7 +11,7 @@ def text_to_audio(bark_model="suno/bark", voice_preset="v2/ru_speaker_6", text="
 
     inputs = processor(text, voice_preset=voice_preset).to(device)
     audio_array = model.generate(**inputs)
-    audio_array = audio_array.cpu().nympy().squezze()
+    audio_array = audio_array.cpu().numpy().squezze()
 
     sample_rate = model.generation_config.sample_rate
     scipy.io.wavfile.write(f"{voice_preset.split('/')[0]}", rate=sample_rate, data=audio_array)
